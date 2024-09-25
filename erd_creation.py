@@ -16,29 +16,30 @@ def create_erd():
     add_entity(erd, 'Transactions', 'T')
 
     # Add attributes in subgraphs for better control
-    with erd.subgraph(name='cluster_A') as s:
+    with erd.subgraph(name='cluster_A'):
         add_attribute(erd, 'Author_ID\n(PK)', 'A')
         add_attribute(erd, 'Name', 'A')
         add_attribute(erd, 'Bio', 'A')
 
-    with erd.subgraph(name='cluster_B') as s:
+    with erd.subgraph(name='cluster_B'):
         add_attribute(erd, 'Book_ID\n(PK)', 'B')
         add_attribute(erd, 'Title', 'B')
         add_attribute(erd, 'Genre', 'B')
         add_attribute(erd, 'Price', 'B')
         add_attribute(erd, 'Author_ID\n(FK)', 'B')
 
-    with erd.subgraph(name='cluster_C') as s:
+    with erd.subgraph(name='cluster_C'):
         add_attribute(erd, 'Customer_ID\n(PK)', 'C')
         add_attribute(erd, 'Name', 'C')
         add_attribute(erd, 'Email', 'C')
         add_attribute(erd, 'Phone_Number', 'C')
 
-    with erd.subgraph(name='cluster_T') as s:
+    with erd.subgraph(name='cluster_T'):
         add_attribute(erd, 'Transaction_ID\n(PK)', 'T')
         add_attribute(erd, 'Customer_ID\n(FK)', 'T')
         add_attribute(erd, 'Book_ID\n(FK)', 'T')
         add_attribute(erd, 'Transaction_Date', 'T')
+
 
     # Add relationships
     add_relationship(erd, 'writes', 'A', 'B')
